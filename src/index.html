@@ -33,7 +33,50 @@
       .fade {
         transition: background 600ms ease, color 300ms ease;
       }
-           
+
+      /* showing icon on hover */
+      #searchBtn:hover {
+        font-size: 18px;
+        transition: all 0.3s ease;
+        background-color: #ffbb00;
+        box-shadow: 5px 5px #ffd86f;
+      }
+
+      #searchBtn i {
+        display: none;
+      }
+
+      #searchBtn:hover i {
+        display: inline-block;
+        scale: 1.2;
+      }
+
+      #currentLocationBtn i {
+        display: none;
+      }
+
+      #currentLocationBtn:hover i {
+        display: inline-block;
+        scale: 1.2;
+      }
+
+      #currentLocationBtn:hover {
+        font-size: 18px;
+        transition: all 0.3s ease;
+        background-color: #2ae012;
+        box-shadow: 5px 5px #1eff00;
+      }
+
+      /* message box */
+      #messageBox {
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        transform: translateY(8px);
+        opacity: 0;
+      }
+      #messageBox.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
     </style>
   </head>
   <body class="min-h-screen fade flex items-center justify-center p-6 bg-sunny">
@@ -108,7 +151,7 @@
         </div>
       </section>
 
-      <!-- Message box -->
+      <!-- Message box (custom) -->
       <div
         id="messageBox"
         class="fixed bottom-6 right-6 bg-red-600 text-black px-4 py-3 rounded shadow-lg z-50"
@@ -120,7 +163,7 @@
       <main class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Current Weather Card -->
         <article id="weatherCard"
-         class="bg-white bg-opacity-12 backdrop-blur-md rounded-2xl p-6 shadow-lg text-black ">
+         class="bg-white bg-opacity-12 backdrop-blur-md rounded-2xl p-6 shadow-lg text-black hidden">
           <div class="flex items-center justify-between">
             <div>
               <h2 id="cityName" class="text-2xl font-bold">City, Country</h2>
@@ -165,5 +208,6 @@
         </aside>
       </main>
     </div>
+
   </body>
 </html>

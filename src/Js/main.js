@@ -31,6 +31,7 @@ searchForm.addEventListener("submit", (event) => {
     fetchWeather(cityInput.value);
   });
 
+currentLocationBtn.addEventListener("click", () => getWeatherGps());
 
 async function fetchWeather(city) {
   if (!city || city.trim() === "") {
@@ -47,5 +48,26 @@ async function fetchWeather(city) {
     console.log(data);
   } catch (error) {
     console.error("Error fetching weather data:", error);
+  }
+}
+
+
+function getWeatherGps() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        fetchWeather(`${lat},${lon}`);
+        console.log(`${lat},${lon}`)
+      },
+      (error) => {
+        console.error("Error getting location:", error);
+        alert("Unable to retrieve your location.");
+
+      }
+    );
+  } else {
+    alert("Geolocation is not supported by this browser.");
   }
 }

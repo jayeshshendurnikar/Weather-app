@@ -16,22 +16,37 @@
     <style>
       body {
         font-family: "Inter", sans-serif;
+        background-attachment: fixed;
       }
-      /* Dynamic background classes for JS */
+
+      /* Dynamic background classes */
       .bg-sunny {
-        background: linear-gradient(180deg, #ffd86f 0%, #ff7a18 100%);
+        background: url("https://64.media.tumblr.com/92a9e24eccbbb43f707907ba7af4389a/tumblr_orfxbzabtu1wrkrqxo1_500.gif")
+          center/cover no-repeat fixed;
       }
+
       .bg-cloudy {
-        background: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%);
+        background: url("https://i.pinimg.com/originals/3c/6d/81/3c6d812bd53d19b45202e5483380b97a.gif")
+          center/cover no-repeat fixed;
       }
+
       .bg-rainy {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        background: url("https://cdn.pixabay.com/animation/2023/03/26/01/15/01-15-42-612_512.gif")
+          center/cover no-repeat fixed;
       }
+
       .bg-snow {
-        background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+        background: url("https://i.pinimg.com/originals/95/e8/2d/95e82d311a9c58d3f5e758c1d472f994.gif")
+          center/cover no-repeat fixed;
       }
+      /* Default background */
+      .default-bg {
+        background: url("https://study.com/cimages/videopreview/videopreview-full/weather-definition-and-types_113503.jpg")
+          center/cover no-repeat fixed;
+      }
+
       .fade {
-        transition: background 600ms ease, color 300ms ease;
+        transition: background 600ms ease;
       }
 
       /* showing icon on hover */
@@ -79,7 +94,9 @@
       }
     </style>
   </head>
-  <body class="min-h-screen fade flex items-center justify-center p-6 bg-sunny">
+   <body
+    class="min-h-screen fade flex items-center justify-center p-6 default-bg"
+  >
     <div class="w-full max-w-5xl">
       <!-- Header -->
       <header class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
@@ -135,19 +152,17 @@
 
         <!-- Recently searched dropdown -->
         <div class="mt-3 flex items-center gap-3">
-          <label class="text-black/90">Recently searched:</label>
+          <label class="text-black/90">Recent search:</label>
           <select
             id="recentSelect"
             class="px-3 py-2 rounded-md text-gray-800 bg-white/90 border "
           >
-            <option value="">-- none --</option>
+            <option value="">-none-</option>
           </select>
           <button
             id="clearRecent"
             class="ml-2 px-3 py-1 rounded-[7px] bg-white/20 text-black/90 text-sm border-2 border-solid"
-          >
-            Clear
-          </button>
+          >Clear</button>
         </div>
       </section>
 

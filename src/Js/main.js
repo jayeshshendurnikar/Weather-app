@@ -39,6 +39,11 @@ async function fetchWeather(city) {
     return;
   }
 
+  if (/[@#$%^&*]/.test(city)) {
+    showMessage("City name cannot contain special characters like @ # $ % ^ & *.", "error", 2500);
+    return;
+  }
+
   try {
     const response = await fetch(
       `${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=5&aqi=no&alerts=no`
@@ -289,3 +294,20 @@ function populateRecentDropdown() {
     recentSelect.appendChild(opt);
   });
 }
+
+// When user selects from dropdown → fetch that city
+recentSelect.addEventListener("change", () => {
+  const val = recentSelect.value;
+  if (!val) return;
+  cityInput.value = val;
+  fetchWeather(val);
+});
+
+// Clear button
+clearRecentBtn.addEventListener("click", () => {
+  localStorage.removeItem("recentSearches");
+  populateRecentDropdown();
+  showMessage("Recent searches cleared", "info");
+});
+
+window.addEventListener("DOMContentLoaded", populateRecentDropdown);

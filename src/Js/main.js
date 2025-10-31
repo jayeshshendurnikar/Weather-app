@@ -50,6 +50,7 @@ async function fetchWeather(city) {
     // console.log(data);
     renderCurrent(data);
     renderForecast(data.forecast.forecastday);
+    pushRecent(data.location.name);
   } catch (error) {
     // console.error("Error fetching weather data:", error);
     showMessage("Unable to fetch weather data", "error", 5000);
@@ -251,4 +252,40 @@ function renderForecast(days) {
       `;
     forecastContainer.appendChild(card);
   }
+}
+
+// set cities in local storage
+function setRecent(arr) {
+  localStorage.setItem("recentSearches", JSON.stringify(arr)); // convert arr to string
+  populateRecentDropdown();
+}
+
+// getting cities in local storage
+function getRecent() {
+  return JSON.parse(localStorage.getItem("recentSearches") || "[]");
+}
+
+// this will not to do duplicate entries of city names and Newest city goes first
+function pushRecent(city) {
+  if (!city) return;
+  let arr = getRecent();
+  const lower = city.toLowerCase();
+  arr = arr.filter((c) => c.toLowerCase() !== lower);
+  // add the new city to the beginning
+  arr.unshift(city);
+  if (arr.length > 8) arr = arr.slice(0, 8); // Maximum of 8 recent cities stored
+  setRecent(arr);
+}
+
+// shows city in dropdown
+function populateRecentDropdown() {
+  const arr = getRecent();
+  recentSelect.innerHTML = '<option value="">- none -</option>';
+
+  arr.forEach((city) => {
+    const opt = document.createElement("option");
+    opt.value = city;
+    opt.textContent = city;
+    recentSelect.appendChild(opt);
+  });
 }

@@ -111,7 +111,7 @@ function renderCurrent(data) {
     p.className =
       "flex items-center justify-center gap-2 bg-yellow-500 text-black-900 font-semibold text-center py-3 px-5 rounded-xl shadow-md max-w-xl mx-auto border border-yellow-400 transition transform hover:scale-105";
     p.innerHTML =
-      "<i class='fa-solid fa-triangle-exclamation fa-fade fa-lg' style='color: black;'></i> <span>Extreme heat: Stay hydrated and avoid going outside!</span>";
+      "<i class='fa-solid fa-triangle-exclamation fa-fade fa-lg' style='color: black;'></i> <span>Extreme heat: Stay hydrated and avoid to going outside!</span>";
 
     alertsDiv.appendChild(p);
   } else if (tC <= -10) {
@@ -119,7 +119,7 @@ function renderCurrent(data) {
     p.className =
       "flex items-center justify-center gap-2 bg-blue-200 text-blue-900 font-semibold text-center py-3 px-5 rounded-xl shadow-md max-w-xl mx-auto border border-blue-400 transition transform hover:scale-105";
     p.innerHTML =
-      "<i class='fa-solid fa-snowflake fa-fade text-black-100 text-lg'></i> <span>Extreme cold: Dress warmly and avoid long outdoor exposure!</span>";
+      "<i class='fa-solid fa-snowflake fa-fade text-black-100 text-lg'></i> <span>Extreme cold: Wear warm clothes and avoid staying outdoors for long!</span>";
     alertsDiv.appendChild(p);
   }
 
@@ -136,7 +136,9 @@ function updateBackground(conditionText) {
     "bg-sunny",
     "bg-cloudy",
     "bg-rainy",
-    "bg-snow"
+    "bg-snow",
+    "bg-mist",
+    "bg-clear"
   );
 
   const c = (conditionText || "").toLowerCase();
@@ -154,6 +156,14 @@ function updateBackground(conditionText) {
     c.includes("blizzard")
   ) {
     body.classList.add("bg-snow");
+  } else if (
+    c.includes("mist")
+  ) {
+    body.classList.add("bg-mist");
+  } else if (
+    c.includes("clear")
+  ) {
+    body.classList.add("bg-clear");
   } else if (
     c.includes("cloud") ||
     c.includes("overcast") ||

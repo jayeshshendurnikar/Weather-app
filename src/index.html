@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <title>Weather Forecast App</title>
     <link href="output.css" rel="stylesheet" />
     <link
@@ -25,6 +26,17 @@
           center/cover no-repeat fixed;
       }
 
+      .bg-mist {
+        background: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdndodDM3ZmM5aW5hYml1OXVtOTBhamMxN3Bka2dtemo2aWwxOWl3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yhZr5Wx7CBFbq/giphy.gif")
+          center/cover no-repeat fixed;
+      }
+
+      .bg-clear {
+        background: url("https://i.makeagif.com/media/1-20-2017/Dcv7Ly.gif")
+          center/cover no-repeat fixed;
+      }
+
+  
       .bg-cloudy {
         background: url("https://i.pinimg.com/originals/3c/6d/81/3c6d812bd53d19b45202e5483380b97a.gif")
           center/cover no-repeat fixed;
@@ -80,6 +92,31 @@
         transition: all 0.3s ease;
         background-color: #2ae012;
         box-shadow: 5px 5px #1eff00;
+      }
+
+      #clearRecent i {
+        display: none;
+      }
+
+      #clearRecent:hover i {
+        display: inline-block;
+        scale: 1.2;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .change:hover{
+        background-color: #57ee35;
+        box-shadow: 0 0 5px #33ff00;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        border:solid #57ee35;
+        cursor: pointer;
+      }
+
+      .change1:hover{
+        cursor: pointer;
+        scale: 1.1;
       }
 
       /* message box */
@@ -144,7 +181,7 @@
             <button
               id="unitBtn"
               type="button"
-              class="px-3 py-1 bg-white/80 text-gray-900 rounded-[7px] border-2 border-solid">
+              class="px-3 py-1 bg-white/80 text-gray-900 rounded-[7px] border-2 border-solid change1">
               °C
             </button>
           </div>
@@ -161,8 +198,8 @@
           </select>
           <button
             id="clearRecent"
-            class="ml-2 px-3 py-1 rounded-[7px] bg-white/20 text-black/90 text-sm border-2 border-solid"
-          >Clear</button>
+            class="ml-2 px-3 py-1 rounded-[7px] bg-white/20 text-black/90 text-sm border-2 border-solid change"
+          ><i class="fa-solid fa-trash fa-shake"></i> Clear</button>
         </div>
       </section>
 

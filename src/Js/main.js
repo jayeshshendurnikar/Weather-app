@@ -26,13 +26,16 @@ const currentLocationBtn = document.getElementById("currentLocationBtn");
 let currentUnit = "C"; // Celsius default for today's display
 let currentData = null; // store current weather response
 
+// on submit search weather for that city
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   fetchWeather(cityInput.value);
 });
 
+// on click get weather for current location
 currentLocationBtn.addEventListener("click", () => getWeatherGps());
 
+// fetch weather data
 async function fetchWeather(city) {
   if (!city || city.trim() === "") {
     showMessage("Please enter a city name.", "error", 2500);
@@ -62,6 +65,7 @@ async function fetchWeather(city) {
   }
 }
 
+// get weather by GPS
 function getWeatherGps() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -81,6 +85,7 @@ function getWeatherGps() {
   }
 }
 
+// render current weather
 function renderCurrent(data) {
   currentData = data;
   weatherCard.classList.remove("hidden");
@@ -129,6 +134,7 @@ function renderCurrent(data) {
   unitBtn.textContent = currentUnit === "C" ? "°C" : "°F";
 }
 
+// update background based on weather condition
 function updateBackground(conditionText) {
   const body = document.body;
   body.classList.remove(
@@ -177,6 +183,8 @@ function updateBackground(conditionText) {
   }
 }
 
+
+// show message box
 function showMessage(text, type = "error", duration = 2500) {
   messageBox.textContent = text;
   messageBox.hidden = false;
@@ -200,6 +208,8 @@ function showMessage(text, type = "error", duration = 2500) {
   }, duration);
 }
 
+
+// toggle units between C and F
 unitBtn.addEventListener("click", () => {
   if (!currentData) {
     showMessage("No weather data to toggle units for.", "error");
@@ -219,6 +229,7 @@ unitBtn.addEventListener("click", () => {
   }
 });
 
+// render 5-day forecast
 function renderForecast(days) {
   forecastContainer.innerHTML = "";
 

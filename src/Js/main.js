@@ -35,7 +35,7 @@ currentLocationBtn.addEventListener("click", () => getWeatherGps());
 
 async function fetchWeather(city) {
   if (!city || city.trim() === "") {
-    showMessage("Please enter a valid city name.", "error", 2500);
+    showMessage("Please enter a city name.", "error", 2500);
     return;
   }
 

@@ -1,4 +1,4 @@
-const API_KEY = ""; // Insert your WeatherAPI key here
+const API_KEY = "27329e9c1d5640a081b100938252810"; // Insert your WeatherAPI key here
 const BASE_URL = "https://api.weatherapi.com/v1";
 
 const localTimeDisplay = document.getElementById("localTime");
